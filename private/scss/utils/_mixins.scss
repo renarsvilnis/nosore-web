@@ -1,0 +1,83 @@
+// ########################################
+// Mixins
+// ########################################
+
+/**
+ * Helper to clear inner floats
+ * @author Nicolas Gallagher
+ * @link http://nicolasgallagher.com/micro-clearfix-hack/ Micro Clearfix
+ */
+@mixin clearfix {
+  &:after {
+    content: '';
+    display: table;
+    clear: both;
+  }
+}
+
+
+/**
+ * Vertical alignment with only 3 lines of code
+ * http://zerosixthree.se/vertical-align-anything-with-just-3-lines-of-css/
+ */
+@mixin vertical-align {
+  position: relative;
+  top: 50%;
+  transform: translateY(-50%);
+}
+
+/**
+ * Create a mixin that overrides that global variable.
+  * USAGE EXAMPLE:
+
+  // Initialize a global variable at root level.
+  $variable: 'initial value';
+
+  .local-scope::before {
+    // Create a local variable that shadows the global one.
+    $variable: 'local value';
+
+    // Include the mixin: it overrides the global variable.
+    @include global-variable-overriding;
+
+    // Print the variable’s value.
+    // It is the **local** one, since it shadows the global one.
+    content: $variable;
+  }
+
+  // Print the variable in another selector that does no shadowing.
+  // It is the **global** one, as expected.
+  .other-local-scope::before {
+    content: $variable;
+  }
+*/
+@mixin global-variable-overriding {
+  $variable: 'mixin value' !global;
+}
+
+
+@mixin flexbox-parent {
+  display: flex;
+  flex-direction: row;
+  flex-wrap: wrap;
+  justify-content: flex-start;
+  align-content: flex-start;
+  align-items: flex-start;
+}
+
+@mixin stop-drag {
+  // TODO: update mqpacker to probably remove this
+  -webkit-user-select: none;
+  -ms-user-select: none;
+  user-select: none;
+  -webkit-user-drag: none;
+  user-drag: none;
+}
+
+// sass svg fallback to png (or your desired extension)
+// similar to other fallbacks but this supports < 4 firefox
+@mixin png-svg-fallback($url, $extension: '.png') {
+  background-image: url($url + $extension);
+  background-image: -webkit-linear-gradient(transparent, transparent), url($url + ".svg");
+  background-image: linear-gradient(transparent, transparent), url($url + ".svg");
+}

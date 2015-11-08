@@ -1,0 +1,20 @@
+
+.nav-sidebar {
+  position: fixed;
+  top: 0;
+  left: 0;
+  height: 100%;
+  width: $nav-sidebar-width;
+  overflow: hidden;
+  padding: $header-padding;
+
+  &__list {
+    &--nested {
+      margin-left: 1em;
+    }
+  }
+
+  &__item {
+    font-size: 14px;
+  }
+}

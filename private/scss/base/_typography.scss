@@ -1,0 +1,25 @@
+body {
+  font-family: $font-family-sans-serif;
+  font-size: 16px;
+  font-weight: $font-weight-normal;
+}
+
+h1, h2, h3, h4, h5, h6 {
+  font-family: inherit;
+}
+
+em, i { 
+  font-style: italic;
+}
+
+strong, b {
+  font-weight: bold;
+}
+
+strong em, strong i,
+b em, b i,
+em strong, em b,
+i strong, i b {
+  font-weight: bold;
+  font-style: italic;
+}

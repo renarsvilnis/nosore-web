@@ -1,0 +1,44 @@
+// ########################################
+// Colors
+// ########################################
+
+$color-font: #ffffff;
+
+$color-white: #ffffff;
+$color-light-grey: #EEEEEE;
+
+// ########################################
+// TYPE
+// ########################################
+
+// NOTE: before rewrite was with important 
+$font-family-sans-serif: 'Lato', Sans-serif;
+
+$font-weight-hairline: 100;
+$font-weight-light: 300;
+$font-weight-normal: 400;
+// $font-weight-medium: 500;
+$font-weight-bold: 700;
+$font-weight-heavy: 900;
+
+
+// ########################################
+// BREAKBOINTS
+// ########################################
+
+
+// ########################################
+// COMPONENTS
+// ########################################
+
+$body-color: $color-font;
+$body-background-color: $color-white;
+
+$header-height: 6em;
+$header-background-color: $body-background-color;
+$header-padding: $header-height 1em 1em 1em;
+
+
+$nav-sidebar-width: 13em;
+$nav-sidebar-item-font-size: 14px;
+$nav-sidebar-border-bottom: 1px solid $color-light-grey;

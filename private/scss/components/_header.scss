@@ -1,0 +1,30 @@
+.header {
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: $header-height;
+  background-color: $header-background-color;
+
+  &__content {
+    position: absolute;
+    left: 0;
+    top: 0;
+    width: 100%;
+    width: calc(100% - #{$nav-sidebar-width});
+    height: $header-height;
+    // adding a margin instead of padding to move the header so that
+    margin-left: $nav-sidebar-width;
+    // padding-right: $nav-sidebar-width;
+    border-bottom: $nav-sidebar-border-bottom;
+  }
+
+  &__search-input {
+    display: block;
+    float: right;
+  }
+
+  &__title {
+    float: left;
+  }
+}

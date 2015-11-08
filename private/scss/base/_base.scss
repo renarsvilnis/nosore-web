@@ -1,0 +1,47 @@
+* {
+  box-sizing: border-box;
+  // http://maxvoltar.com/archive/-webkit-font-smoothing
+  font-smoothing: antialiased;
+  -webkit-font-smoothing: antialiased;
+  text-rendering: optimizeLegibility;
+
+  /*https://developer.mozilla.org/en-US/docs/Web/CSS/text-size-adjust*/
+  -webkit-text-size-adjust: none;
+  -moz-text-size-adjust: none;
+  -ms-text-size-adjust: none;
+
+  /*http://css-infos.net/property/-webkit-tap-highlight-color*/
+  -webkit-tap-highlight-color: rgba(0,0,0,0); /*transparent*/
+
+  -moz-background-clip: border;
+  -webkit-background-clip: border;
+  background-clip: border-box;
+}
+
+html,
+body {
+  width: 100%;
+  height: 100%;
+  padding: 0;
+  margin: 0;
+  background-color: $body-background-color;
+}
+
+::selection {
+  background: red;
+}
+::-moz-selection {
+  background: red;
+}
+
+/* remove dotted borders when clicking on links */
+:focus,
+:active {
+  outline:none;
+  border:0;
+}
+
+::-moz-focus-inner {
+  border:0;
+}
+
