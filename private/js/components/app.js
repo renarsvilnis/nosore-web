@@ -1,26 +1,21 @@
 'use strict';
 
 import React, {PropTypes} from 'react';
-import PureRenderMixin from 'react-addons-pure-render-mixin';
+// import PureRenderMixin from 'react-addons-pure-render-mixin';
 
 import Header from './header.js';
 import NavSidebar from './navigation-sidebar';
+import Patients from './patients';
 
 import mockData from '../../../data';
 
 export const App = React.createClass({
-  propTypes: {
-    activePacients: PropTypes.array,
-    activeTitle: PropTypes.string,
-    pacients: PropTypes.array
-  },
-
-  mixins: [PureRenderMixin],
+  // mixins: [PureRenderMixin],
 
   getInitialState () {
     return {
-      pacients: mockData.pacients,
-      activeContent: mockData.pacients
+      patients: mockData.patients,
+      activeContent: mockData.patients
     };
   },
 
@@ -28,7 +23,9 @@ export const App = React.createClass({
     console.log('Search input ev');
   },
 
+  // {/*<NavSidebar {...this.state.activeContent} />*/}
   render () {
+    console.log(this.state);
     return (
       <div className="app">
 
@@ -36,8 +33,9 @@ export const App = React.createClass({
           onSearchChange={this.handleSearchInputChange}
           title={this.state.activeContent.title}
         />
-        <NavSidebar {...this.state.activeContent} />
-        <div className="content">{this.props.children}</div>
+        <div className="content">
+          <Patients node={this.state.activeContent} />
+        </div>
       </div>
     );
   }

@@ -1,5 +1,6 @@
 .content {
   width: 100%;
+  width: calc(100% - #{$nav-sidebar-width} - 3em);
   min-height: 100%;
   margin-top: 6em;
   margin-left: $nav-sidebar-width;

@@ -1,0 +1,62 @@
+.patients {
+  position: relative;
+  width: 100%;
+  overflow: hidden;
+
+  &__table {
+    width: 100%;
+    table-layout: fixed;
+  }
+
+  &__table-head {
+
+  }
+
+  &__body {
+
+  }
+
+  th {
+    text-align: left;
+  }
+
+  td {
+    line-height: 1.5;
+  }
+
+  &__status {
+    width: 64px;
+    text-align: center !important;
+  }
+
+  &__division {width: 80px;}
+  &__room {width: 64px;}
+  &__schedule {width: 150px;}
+}
+
+.patient {
+
+  // ########################################
+  // Status & Status Icon
+  // ########################################
+  &-status {
+    // text-align: center;
+
+    &__icon {
+      width: $patient-status-icon-size;
+      height: $patient-status-icon-size;
+      border-radius: $patient-status-icon-border-radius;
+      background-color: $patient-status-icon-note-color;
+      margin: 0 auto;
+
+      &--ok {background-color: $patient-status-icon-ok-color;}
+      &--note {background-color: $patient-status-icon-note-color;}
+      &--issue {background-color: $patient-status-icon-issue-color;} 
+    }
+  }
+
+  &-date-info {
+    font-weight: 200;
+  }
+}
+  

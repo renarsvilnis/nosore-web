@@ -7,6 +7,10 @@ $color-font: #ffffff;
 $color-white: #ffffff;
 $color-light-grey: #EEEEEE;
 
+$color-status-ok: #4CAF50;
+$color-status-note: #FFEB3B;
+$color-status-issue: #f44336;
+
 // ########################################
 // TYPE
 // ########################################
@@ -28,6 +32,11 @@ $font-weight-heavy: 900;
 
 
 // ########################################
+// Z-index - list grows as we go
+// ########################################
+$z-index-header: 5;
+
+// ########################################
 // COMPONENTS
 // ########################################
 
@@ -42,3 +51,9 @@ $header-padding: $header-height 1em 1em 1em;
 $nav-sidebar-width: 13em;
 $nav-sidebar-item-font-size: 14px;
 $nav-sidebar-border-bottom: 1px solid $color-light-grey;
+
+$patient-status-icon-size: 10px;
+$patient-status-icon-border-radius: 100%;
+$patient-status-icon-ok-color: $color-status-ok;
+$patient-status-icon-note-color: $color-status-note;
+$patient-status-icon-issue-color: $color-status-issue;

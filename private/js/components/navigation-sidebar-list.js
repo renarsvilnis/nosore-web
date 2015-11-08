@@ -5,7 +5,9 @@ import classNames from 'classnames';
 import NavigationSidebarItem from './navigation-sidebar-item.js';
 
 let NavigationSidebarList = (props) => {
+
   let children = props.list.map((item) => {
+    console.log(item);
     return (
       <NavigationSidebarItem
         key={item.id}

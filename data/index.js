@@ -3,7 +3,7 @@
 let divisions = require('./divisions.js');
 let rooms = require('./rooms.js');
 let util = require('../lib/util');
-let RandomPacient = require('./random-pacient');
+let RandomPatient = require('./random-patient');
 let uuid = require('uuid');
 
 const minRoomCountPerDivision = 3;
@@ -11,47 +11,54 @@ const maxRoomCountPerDivision = 7;
 const minPersonsPerRoom = 1;
 const maxPersonsPerRoom = 10;
 
-let createDivision = function (parentSlug, divisionName) {
+let createDivision = function (parentData, division) {
   // Randomize the room count for each division
-  let roomCountForDivision = util.getRandomInt(
+  let roomCount = util.getRandomInt(
     minRoomCountPerDivision,
     maxRoomCountPerDivision
   );
 
-  let slug = util.createSlug(divisionName, parentSlug);
+  let slug = util.createSlug(division.title, parentData.slug);
 
   let divisionData = {
     id: uuid.v1(),
-    title: divisionName,
+    title: division.title,
+    code: division.code,
     slug,
-    list: []
+    list: [],
+    navigation_item: true
   };
 
-  for (let i = 0; i < roomCountForDivision; i++) {
-    divisionData.list.push(createRoom(rooms[i], slug));
+  for (let i = 0; i < roomCount; i++) {
+    divisionData.list.push(createRoom({
+      division: division.code,
+      slug
+    }, rooms[i]));
   }
 
   return divisionData;
 };
 
-let createRoom = function (roomName, parentSlug) {
+let createRoom = function (parentData, room) {
   // Randomize the room count for each division
-  let personsForRoom = util.getRandomInt(
+  let personCount = util.getRandomInt(
     minPersonsPerRoom,
     maxPersonsPerRoom
   );
 
-  let slug = util.createSlug(roomName, parentSlug);
+  let slug = util.createSlug(room, parentData.slug);
 
   let roomData = {
     id: uuid.v1(),
-    title: roomName,
+    title: room,
+    code: room,
     slug,
-    list: []
+    list: [],
+    navigation_item: true
   };
 
-  for (let i = 0; i < personsForRoom; i++) {
-    let pacient = new RandomPacient(slug);
+  for (let i = 0; i < personCount; i++) {
+    let pacient = new RandomPatient({room, slug, division: parentData.division});
 
     roomData.list.push(pacient);
   }
@@ -59,17 +66,18 @@ let createRoom = function (roomName, parentSlug) {
   return roomData;
 };
 
-let createPacients = function (parentSlug) {
-  let title = 'pacients';
-  let slug = util.createSlug(title, parentSlug);
+let createPatients = function (parentData) {
+  let title = 'Patients';
+  let slug = util.createSlug(title, parentData.slug);
   return {
     id: uuid.v1(),
     title,
     slug,
-    list: divisions.map(createDivision.bind(this, parentSlug))
+    list: divisions.map(createDivision.bind(this, {slug})),
+    navigation_item: true
   };
 };
 
 module.exports = {
-  pacients: createPacients('api')
+  patients: createPatients('api')
 };
