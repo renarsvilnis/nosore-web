@@ -11,6 +11,13 @@ $color-status-ok: #4CAF50;
 $color-status-note: #FFEB3B;
 $color-status-issue: #f44336;
 
+// $color-font-grey: #BDBDBD;
+$color-font-grey: #212121;
+// $color-font-grey-active: $color-status-issue;
+
+// $color-font-grey-active: #1D4A6b;
+$color-font-grey-active: #0f6Eb7;
+
 // ########################################
 // TYPE
 // ########################################
@@ -45,14 +52,14 @@ $body-background-color: $color-white;
 
 $header-height: 6em;
 $header-background-color: $body-background-color;
-$header-padding: $header-height 1em 1em 1em;
+$header-padding: $header-height + 2em 0em 1em 1em;
 
 
 $nav-sidebar-width: 13em;
 $nav-sidebar-item-font-size: 14px;
 $nav-sidebar-border-bottom: 1px solid $color-light-grey;
 
-$patient-status-icon-size: 10px;
+$patient-status-icon-size: 12px;
 $patient-status-icon-border-radius: 100%;
 $patient-status-icon-ok-color: $color-status-ok;
 $patient-status-icon-note-color: $color-status-note;

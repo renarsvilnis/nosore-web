@@ -50,7 +50,7 @@ let createRoom = function (parentData, room) {
 
   let roomData = {
     id: uuid.v1(),
-    title: room,
+    title: `#${room}`,
     code: room,
     slug,
     list: [],

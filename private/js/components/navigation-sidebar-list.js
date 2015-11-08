@@ -4,39 +4,48 @@ import React, {PropTypes} from 'react';
 import classNames from 'classnames';
 import NavigationSidebarItem from './navigation-sidebar-item.js';
 
-let NavigationSidebarList = (props) => {
+const NavigationSidebarList = React.createClass({
 
-  let children = props.list.map((item) => {
-    console.log(item);
-    return (
-      <NavigationSidebarItem
-        key={item.id}
-        {...item}
-        depth={props.depth + 1}
-      />
+  getDefaultProps () {
+    return {
+      depth: 0,
+      list: []
+    };
+  },
+
+  renderChildren () {
+    let res = [];
+    this.props.list.forEach((item) => {
+      res.push(
+        <NavigationSidebarItem
+          key={item.id}
+          {...item}
+          depth={this.props.depth + 1}
+          activeMenuItem={this.props.activeMenuItem}
+        />
+      );
+    });
+
+    return res;
+  },
+
+  render () {
+    if (!this.props.list.length || !this.props.list[0].navigation_item) {
+      return null;
+    }
+
+    console.log(this.props.depth);
+    let listClassNames = classNames(
+      'nav-sidebar__list',
+      {'nav-sidebar__list--nested': this.props.depth}
     );
-  });
 
-  let listClassNames = classNames(
-    'nav-sidebar__list',
-    {'nav-sidebar__list--nested': props.depth}
-  );
-
-  return (
-    <div className={listClassNames}>
-      {children}
-    </div>
-  );
-};
-
-NavigationSidebarList.propTypes = {
-  depth: PropTypes.number.isRequired,
-  list: PropTypes.array
-};
-
-NavigationSidebarList.defaultProps = {
-  depth: 0,
-  list: []
-};
+    return (
+      <div className={listClassNames}>
+        {this.renderChildren()}
+      </div>
+    );
+  }
+});
 
 export default NavigationSidebarList;

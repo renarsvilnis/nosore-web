@@ -15,7 +15,8 @@ export const App = React.createClass({
   getInitialState () {
     return {
       patients: mockData.patients,
-      activeContent: mockData.patients
+      activeContent: mockData.patients,
+      activeMenuItem: mockData.patients.id
     };
   },
 
@@ -23,9 +24,7 @@ export const App = React.createClass({
     console.log('Search input ev');
   },
 
-  // {/*<NavSidebar {...this.state.activeContent} />*/}
   render () {
-    console.log(this.state);
     return (
       <div className="app">
 
@@ -33,6 +32,7 @@ export const App = React.createClass({
           onSearchChange={this.handleSearchInputChange}
           title={this.state.activeContent.title}
         />
+        <NavSidebar {...this.state.patients} activeMenuItem={this.state.activeMenuItem} />
         <div className="content">
           <Patients node={this.state.activeContent} />
         </div>

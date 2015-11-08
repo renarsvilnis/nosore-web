@@ -10,11 +10,25 @@
 
   &__list {
     &--nested {
-      margin-left: 1em;
+      margin: 0.25em 0 0.5em 1.25em;
     }
   }
 
   &__item {
     font-size: 14px;
+    letter-spacing: 0.0875em;
+    line-height: 1.5;
+  }
+
+  &__url {
+    text-decoration: none;
+    color: $color-font-grey;
+    font-weight: 700;
+
+    &:hover,
+    &:active,
+    &:focus {
+      color: $color-font-grey-active;
+    }
   }
 }

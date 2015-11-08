@@ -7,16 +7,15 @@ import classNames from 'classnames';
 let Patient = React.createClass({
   propTypes: {
     division: PropTypes.string.isRequired,
-    room: PropTypes.string.isRequired,
     fullname: PropTypes.string.isRequired,
     last_visit: PropTypes.instanceOf(Moment).isRequired,
     next_checkup: PropTypes.instanceOf(Moment).isRequired,
-    next_visit: PropTypes.instanceOf(Moment).isRequired
+    next_visit: PropTypes.instanceOf(Moment).isRequired,
+    room: PropTypes.string.isRequired
   },
 
   componentDidMount () {
     this.interval = window.setInterval(() => {
-      console.log('force rerender');
       this.forceUpdate();
     }, 30000);
   },
@@ -35,7 +34,6 @@ let Patient = React.createClass({
     const minDate = this.props.next_visit.isBefore(this.props.next_checkup) ? this.props.next_visit : this.props.next_checkup;
 
     const timeLeftUntilNearestVisit = Moment().diff(minDate, 'minutes');
-    console.log(timeLeftUntilNearestVisit);
 
     const statusClassNames = classNames(
       'patient-status__icon',

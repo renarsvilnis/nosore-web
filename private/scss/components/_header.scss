@@ -18,14 +18,29 @@
     margin-left: $nav-sidebar-width;
     // padding-right: $nav-sidebar-width;
     border-bottom: $nav-sidebar-border-bottom;
+
+    max-width: 1024px;
   }
 
   &__search-input {
     display: block;
     float: right;
+    font-size: 24px;
+    border: none;
+    border-bottom: 1px solid #EEE;
+    position: absolute;
+    right: 1em;
+    top: 50%;
+    transform: translateY(-50%);
+    width: 256px;
   }
 
   &__title {
     float: left;
+  }
+
+  &__logo {
+    @include vertical-align;
+    margin-left: 2em;
   }
 }

@@ -6,13 +6,17 @@ let Header = (props) => {
   return (
     <div className="header">
       <div className="header__content">
+        <img
+          alt="" 
+          src="images/nosore-logo.svg"
+          className="header__logo"
+        />
         <input
           className="header__search-input"
           onChange={props.onSearchChange}
           placeholder="Search.."
           type="text"
         />
-        <h1 className="header__title">{props.title}</h1>
       </div>
     </div>
   );

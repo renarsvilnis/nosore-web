@@ -5,6 +5,7 @@
 
   &__table {
     width: 100%;
+    max-width: 1024px;
     table-layout: fixed;
   }
 
@@ -32,6 +33,10 @@
   &__division {width: 80px;}
   &__room {width: 64px;}
   &__schedule {width: 150px;}
+
+  thead > tr {
+    line-height: 2em;
+  }
 }
 
 .patient {
