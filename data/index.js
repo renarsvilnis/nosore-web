@@ -1,27 +1,27 @@
 'use strict';
 
-let Immutable = require('immutable');
-
 let divisions = require('./divisions.js');
 let rooms = require('./rooms.js');
 let util = require('../lib/util');
 let RandomPacient = require('./random-pacient');
+let uuid = require('uuid');
 
 const minRoomCountPerDivision = 3;
 const maxRoomCountPerDivision = 7;
 const minPersonsPerRoom = 1;
 const maxPersonsPerRoom = 10;
 
-let createDivision = function (divisionName) {
+let createDivision = function (parentSlug, divisionName) {
   // Randomize the room count for each division
   let roomCountForDivision = util.getRandomInt(
     minRoomCountPerDivision,
     maxRoomCountPerDivision
   );
 
-  let slug = util.createSlug(divisionName, 'api');
+  let slug = util.createSlug(divisionName, parentSlug);
 
   let divisionData = {
+    id: uuid.v1(),
     title: divisionName,
     slug,
     list: []
@@ -44,6 +44,7 @@ let createRoom = function (roomName, parentSlug) {
   let slug = util.createSlug(roomName, parentSlug);
 
   let roomData = {
+    id: uuid.v1(),
     title: roomName,
     slug,
     list: []
@@ -58,6 +59,17 @@ let createRoom = function (roomName, parentSlug) {
   return roomData;
 };
 
-module.exports = Immutable.fromJS({
-  pacients: divisions.map(createDivision)
-});
+let createPacients = function (parentSlug) {
+  let title = 'pacients';
+  let slug = util.createSlug(title, parentSlug);
+  return {
+    id: uuid.v1(),
+    title,
+    slug,
+    list: divisions.map(createDivision.bind(this, parentSlug))
+  };
+};
+
+module.exports = {
+  pacients: createPacients('api')
+};

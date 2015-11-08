@@ -9,7 +9,6 @@ let NavigationSidebar = (props) => {
   return (
     <div className="nav-sidebar">
       <h2>{props.title}</h2>
-      <Link to="/hello">Hello world</Link>
       <NavigationSidebarList list={props.list} />
     </div>
   );
@@ -21,7 +20,8 @@ NavigationSidebar.propTypes = {
 };
 
 NavigationSidebar.defaultProps = {
-  list: []
+  list: [],
+  title: ''
 };
 
 export default NavigationSidebar;

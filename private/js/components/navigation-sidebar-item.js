@@ -5,6 +5,7 @@ import React, {PropTypes} from 'react';
 import NavigationSidebarList from './navigation-sidebar-list.js';
 
 let NavigationSidebarItem = (props) => {
+  console.log(props);
   return (
     <div className="nav-sidebar__item">
       <Link to={props.slug}>{props.title}</Link>

@@ -23,4 +23,8 @@ Header.propTypes = {
   title: PropTypes.string.isRequired
 };
 
+Header.defaultProps = {
+  title: ''
+};
+
 export default Header;

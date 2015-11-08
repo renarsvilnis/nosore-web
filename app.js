@@ -9,8 +9,6 @@ let cookieParser = require('cookie-parser');
 let bodyParser = require('body-parser');
 
 let routes = require('./routes/index');
-let io = require('./lib/socket-server');
-let makeStore = require('./lib/store');
 
 let app = express();
 
@@ -27,17 +25,5 @@ app.use(cookieParser());
 app.use(express.static(path.join(__dirname, 'public')));
 
 routes(app/*, db*/);
-
-// create app store
-const store = exports.store = makeStore();
-store.dispatch({
-  type: 'SET_ENTRIES',
-  entries: require('./data')
-});
-
-io.on('connection', function (socket) {
-  console.log('Client has connected to the server!');
-  socket.emit('state', store.getState().toJS());
-});
 
 module.exports = app;
