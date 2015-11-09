@@ -18,6 +18,10 @@
     font-size: 14px;
     letter-spacing: 0.0875em;
     line-height: 1.5;
+
+    &--active > a {
+      color: $color-font-grey-active;
+    }
   }
 
   &__url {

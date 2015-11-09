@@ -13,7 +13,7 @@ let NavigationSidebar = (props) => {
       <NavigationSidebarItem
           key={props.id}
           {...props}
-          depth={props.depth + 1}
+          depth={1}
           activeMenuItem={
             props.activeMenuItem}
         />
